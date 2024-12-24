@@ -8,12 +8,14 @@ type User =
     }
   | undefined;
 
-type props = {
+type Props = {
   user: User;
   pagetype: string;
 };
 
-export default function UserCard({ user, pagetype }: props) {
+export default function Card({ user, pagetype }: Props) {
+  console.log(user);
+
   const greeting = user?.name ? (
     <div className="flex flex-col items-center p-6 bg-white rounded-lg font-bold text-5xl text-black">
       Hello {user?.name}!

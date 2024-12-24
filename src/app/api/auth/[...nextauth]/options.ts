@@ -5,25 +5,26 @@ import CredentialsProvider from "next-auth/providers/credentials";
 export const options: NextAuthOptions = {
   providers: [
     GitHubProvider({
-      clientId: process.env.GITHUB_CLIENT_ID as string,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+      clientId: process.env.GITHUB_ID as string,
+      clientSecret: process.env.GITHUB_SECRET as string,
     }),
     CredentialsProvider({
       name: "Credentials",
       credentials: {
         username: {
-          label: "Username",
+          label: "Username:",
           type: "text",
-          placeholder: "your username",
+          placeholder: "your-cool-username",
         },
         password: {
-          label: "Password",
+          label: "Password:",
           type: "password",
-          placeholder: "your password",
+          placeholder: "your-awesome-password",
         },
       },
       async authorize(credentials) {
-        const user = { id: "1", name: "admin", password: "admin" };
+        const user = { id: "42", name: "admin", password: "admin" };
+
         if (
           credentials?.username === user.name &&
           credentials?.password === user.password
